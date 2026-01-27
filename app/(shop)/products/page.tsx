@@ -4,9 +4,11 @@ import { IProduct } from "@/app/interfaces/products.interface";
 import { getProducts } from "@/app/services/products.service";
 import { Separator } from "@/components/ui/separator";
 export default async function Products() {
-  const { data: products }: { data: IProduct[] } = await getProducts(40);
+  const res = await getProducts(40);
+  const products: IProduct[] = res?.data ?? [];
+
   return (
-    <section className="py-20">
+    <section className="py-20 dark:bg-gray-900">
       <div className="container mx-auto">
         <SectionTitle title="Products" subTitle="Our latest products" />
         <Separator />

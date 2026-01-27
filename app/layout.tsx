@@ -10,6 +10,7 @@ import { Navbar } from "./components/layout/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import Providers from "./Providers";
 import FooterPage from "./components/layout/Footer";
+import { ThemeProvider } from "./components/theme-provider";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -27,14 +28,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.className}  antialiased`}>
-        <Providers>
-          <Navbar />
-          <main>{children}</main>
-          <Toaster />
-          <FooterPage />
-        </Providers>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${poppins.className}  antialiased dark:bg-gray-900 flex flex-col min-h-screen`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Providers>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Toaster />
+            <FooterPage />
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );

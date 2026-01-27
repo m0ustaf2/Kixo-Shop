@@ -74,13 +74,13 @@ export default function UpdatePage() {
   }
 
   return (
-    <div className="flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4 bg-gray-50 dark:bg-slate-900">
       {/* Main Card */}
-      <div className="relative w-full max-w-lg rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+      <div className="relative w-full max-w-lg rounded-3xl shadow-2xl border border-white/20 overflow-hidden bg-white dark:bg-slate-800">
         <div className="overflow-hidden">
           {/* Header */}
           <FromHeader
-            icon={<Lock className="w-8 h-8" />}
+            icon={<Lock className="w-8 h-8 text-gray-700 dark:text-gray-200" />}
             Header={"Change Password"}
             subHeader={"Enter your current password and new password"}
           />
@@ -99,7 +99,7 @@ export default function UpdatePage() {
                   const isValid = isFieldValid("currentPassword");
                   return (
                     <FormItem>
-                      <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                      <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2">
                         <Lock className="w-4 h-4 text-purple-600" />
                         Current Password
                       </FormLabel>
@@ -109,12 +109,12 @@ export default function UpdatePage() {
                             {...field}
                             type={showPassword ? "text" : "password"}
                             placeholder="••••••••"
-                            className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 ${
+                            className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 dark:text-gray-100 dark:placeholder-gray-400 ${
                               error
-                                ? "border-red-500 bg-red-50 animate-shake"
+                                ? "border-red-500 bg-red-50 dark:bg-red-900 animate-shake"
                                 : isValid
-                                  ? "border-green-500 bg-green-50"
-                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                  ? "border-green-500 bg-green-50 dark:bg-green-900"
+                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30 dark:border-slate-600 dark:hover:border-purple-400 dark:focus:bg-purple-800/30"
                             }`}
                           />
 
@@ -122,7 +122,7 @@ export default function UpdatePage() {
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-600 transition-colors p-1 z-10"
+                            className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-300 hover:text-purple-600 transition-colors p-1 z-10"
                           >
                             {showPassword ? (
                               <EyeOff className="w-5 h-5" />
@@ -144,6 +144,7 @@ export default function UpdatePage() {
                   );
                 }}
               />
+
               <FormField
                 control={form.control}
                 name="password"
@@ -152,7 +153,7 @@ export default function UpdatePage() {
                   const isValid = isFieldValid("password");
                   return (
                     <FormItem>
-                      <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                      <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2">
                         <Lock className="w-4 h-4 text-purple-600" />
                         Password
                       </FormLabel>
@@ -162,20 +163,19 @@ export default function UpdatePage() {
                             {...field}
                             type={showPassword ? "text" : "password"}
                             placeholder="••••••••"
-                            className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 ${
+                            className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 dark:text-gray-100 dark:placeholder-gray-400 ${
                               error
-                                ? "border-red-500 bg-red-50 animate-shake"
+                                ? "border-red-500 bg-red-50 dark:bg-red-900 animate-shake"
                                 : isValid
-                                  ? "border-green-500 bg-green-50"
-                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                  ? "border-green-500 bg-green-50 dark:bg-green-900"
+                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30 dark:border-slate-600 dark:hover:border-purple-400 dark:focus:bg-purple-800/30"
                             }`}
                           />
 
-                          {/* Toggle Password */}
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-600 transition-colors p-1 z-10"
+                            className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-300 hover:text-purple-600 transition-colors p-1 z-10"
                           >
                             {showPassword ? (
                               <EyeOff className="w-5 h-5" />
@@ -184,10 +184,7 @@ export default function UpdatePage() {
                             )}
                           </button>
 
-                          {/* Error Tooltip */}
                           {error && <ErrorTollTip message={error} />}
-
-                          {/* Success Icon */}
                           {isValid && (
                             <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
                           )}
@@ -197,6 +194,7 @@ export default function UpdatePage() {
                   );
                 }}
               />
+
               <FormField
                 control={form.control}
                 name="rePassword"
@@ -205,7 +203,7 @@ export default function UpdatePage() {
                   const isValid = isFieldValid("rePassword");
                   return (
                     <FormItem>
-                      <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                      <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2">
                         <Lock className="w-4 h-4 text-purple-600" />
                         RePassword
                       </FormLabel>
@@ -215,20 +213,19 @@ export default function UpdatePage() {
                             {...field}
                             type={showPassword ? "text" : "password"}
                             placeholder="••••••••"
-                            className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 ${
+                            className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 dark:text-gray-100 dark:placeholder-gray-400 ${
                               error
-                                ? "border-red-500 bg-red-50 animate-shake"
+                                ? "border-red-500 bg-red-50 dark:bg-red-900 animate-shake"
                                 : isValid
-                                  ? "border-green-500 bg-green-50"
-                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                  ? "border-green-500 bg-green-50 dark:bg-green-900"
+                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30 dark:border-slate-600 dark:hover:border-purple-400 dark:focus:bg-purple-800/30"
                             }`}
                           />
 
-                          {/* Toggle Password */}
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-600 transition-colors p-1 z-10"
+                            className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-300 hover:text-purple-600 transition-colors p-1 z-10"
                           >
                             {showPassword ? (
                               <EyeOff className="w-5 h-5" />
@@ -237,9 +234,7 @@ export default function UpdatePage() {
                             )}
                           </button>
 
-                          {/* Error Tooltip */}
                           {error && <ErrorTollTip message={error} />}
-                          {/* Success Icon */}
                           {isValid && (
                             <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
                           )}

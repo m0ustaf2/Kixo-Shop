@@ -31,6 +31,7 @@ import { Heart, Menu, ShoppingCart, User } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "../shared/Theme-toggle";
 
 const Links = [
   {
@@ -94,13 +95,18 @@ const Navbar = ({
   const { cartDetails } = useCart();
   const { wishlistDetails } = useWishlist();
   return (
-    <section className={cn("py-4 shadow-sm", className)}>
+    <section
+      className={cn(
+        "py-4 shadow-sm dark:bg-gray-800 dark:shadow-gray-800",
+        className,
+      )}
+    >
       <div className="container mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           {/* Logo - Left */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-lg font-semibold tracking-tighter">
+            <span className="text-lg font-semibold tracking-tighter dark:text-gray-100">
               KIXO SHOP
             </span>
           </Link>
@@ -120,6 +126,7 @@ const Navbar = ({
               <LoadingSkeleton />
             ) : status === "unauthenticated" ? (
               <>
+                <ThemeToggle />
                 <Button asChild variant="outline" size="sm">
                   <Link href={auth.login.url}>{auth.login.title}</Link>
                 </Button>
@@ -129,32 +136,27 @@ const Navbar = ({
               </>
             ) : (
               <div className="flex items-center gap-4">
+                <ThemeToggle />
                 <Link className="relative" href="/wishlist">
                   {wishlistDetails && wishlistDetails.count > 0 && (
-                    <Badge
-                      className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
-                      variant="destructive"
-                    >
+                    <Badge className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono  bg-red-500 text-white ">
                       {wishlistDetails.count}
                     </Badge>
                   )}
-                  <Heart className="size-6 hover:text-red-500 transition-colors" />
+                  <Heart className="size-6 hover:text-red-500 dark:text-gray-300 dark:hover:text-red-400 transition-colors" />
                 </Link>
                 <Link className="relative" href="/cart">
                   {cartDetails && cartDetails.numOfCartItems > 0 && (
-                    <Badge
-                      className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
-                      variant="destructive"
-                    >
+                    <Badge className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono bg-red-500 text-white ">
                       {cartDetails?.numOfCartItems}
                     </Badge>
                   )}
-                  <ShoppingCart className="size-6" />
+                  <ShoppingCart className="size-6 dark:text-gray-300" />
                 </Link>
 
-                <DropdownMenu>
+                <DropdownMenu modal={false}>
                   <DropdownMenuTrigger>
-                    <User className="size-6" />
+                    <User className="size-6 cursor-pointer dark:text-gray-300" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -183,25 +185,28 @@ const Navbar = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-lg font-semibold tracking-tighter">
+              <span className="text-lg font-semibold tracking-tighter dark:text-gray-100">
                 KIXO SHOP
               </span>
             </Link>
-            <Sheet>
+            <Sheet modal={false}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
+              <SheetContent className="overflow-y-auto dark:bg-gray-800">
                 <SheetHeader>
                   <SheetTitle>
                     <Link href="/" className="flex items-center gap-2">
-                      <span className="text-lg font-semibold tracking-tighter">
+                      <span className="text-lg font-semibold tracking-tighter dark:text-gray-100">
                         KIXO SHOP
                       </span>
                     </Link>
                   </SheetTitle>
+                  <div className="flex justify-end">
+                    <ThemeToggle />
+                  </div>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
                   <div className="flex flex-col gap-3">
@@ -210,19 +215,21 @@ const Navbar = ({
                         key={item.title}
                         href={item.url}
                         className={cn(
-                          "text-md font-semibold",
-                          pathName === item.url && "underline",
+                          "text-md font-semibold dark:text-gray-300",
+                          pathName === item.url &&
+                            "underline dark:text-gray-100",
                         )}
                       >
                         {item.title}
                       </Link>
                     ))}
                   </div>
-                  <div className="border-t pt-4">
+
+                  <div className="border-t dark:border-gray-700 pt-4">
                     {status === "loading" ? (
                       <div className="flex flex-col gap-3">
-                        <div className="h-9 bg-gray-200 rounded-md animate-pulse"></div>
-                        <div className="h-9 bg-gray-200 rounded-md animate-pulse"></div>
+                        <div className="h-9 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"></div>
+                        <div className="h-9 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"></div>
                       </div>
                     ) : status === "unauthenticated" ? (
                       <div className="flex flex-col gap-3">
@@ -236,34 +243,28 @@ const Navbar = ({
                         </Button>
                       </div>
                     ) : (
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center  gap-4">
                         <Link className="relative" href="/wishlist">
                           {wishlistDetails && wishlistDetails.count > 0 && (
-                            <Badge
-                              className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
-                              variant="destructive"
-                            >
+                            <Badge className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono bg-red-500 text-white">
                               {wishlistDetails.count}
                             </Badge>
                           )}
-                          <Heart className="size-6" />
+                          <Heart className="size-6 dark:text-gray-300" />
                         </Link>
 
                         <Link className="relative" href="/cart">
                           {cartDetails && (
-                            <Badge
-                              className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
-                              variant="destructive"
-                            >
+                            <Badge className="absolute -top-1/2 -end-2 h-5 min-w-5 rounded-full px-1 font-mono bg-red-500 text-white">
                               {cartDetails?.numOfCartItems}
                             </Badge>
                           )}
-                          <ShoppingCart className="size-6" />
+                          <ShoppingCart className="size-6 dark:text-gray-300" />
                         </Link>
 
-                        <DropdownMenu>
+                        <DropdownMenu modal={false}>
                           <DropdownMenuTrigger>
-                            <User className="size-6" />
+                            <User className="size-6 cursor-pointer dark:text-gray-300" />
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -272,7 +273,7 @@ const Navbar = ({
                               <Link href="/profile">Profile</Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                              <Link href="/orders">My Orders</Link>
+                              <Link href="/allorders">My Orders</Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               className="cursor-pointer"
@@ -316,7 +317,7 @@ const renderMenuItem = (item: MenuItem, pathName: string) => {
       <NavigationMenuLink
         href={item.url}
         className={cn(
-          "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground",
+          "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-600 hover:text-accent-foreground",
           pathName === item.url && "underline",
         )}
       >
@@ -329,14 +330,16 @@ const renderMenuItem = (item: MenuItem, pathName: string) => {
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
   return (
     <Link
-      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground"
+      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground dark:hover:bg-gray-800"
       href={item.url}
     >
-      <div className="text-foreground">{item.icon}</div>
+      <div className="text-foreground dark:text-gray-300">{item.icon}</div>
       <div>
-        <div className="text-sm font-semibold">{item.title}</div>
+        <div className="text-sm font-semibold dark:text-gray-100">
+          {item.title}
+        </div>
         {item.description && (
-          <p className="text-sm leading-snug text-muted-foreground">
+          <p className="text-sm leading-snug text-muted-foreground dark:text-gray-400">
             {item.description}
           </p>
         )}

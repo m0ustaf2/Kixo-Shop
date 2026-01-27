@@ -2,27 +2,30 @@ export default function FooterPage() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className=" bg-gray-50  shadow-lg  text-xl text-gray-300  w-full">
+    <footer className="bg-gray-50 dark:bg-gray-800 shadow-lg text-xl text-gray-300 dark:text-gray-400 w-full">
       <div className="">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <p className="text-sm text-gray-400 text-center md:text-left">
+            <p className="text-sm text-gray-400 dark:text-gray-500 text-center md:text-left">
               © {currentYear}
-              <span className="text-purple-400 font-semibold">
-                KIXO - MUSTAFA ESMAIL
+              <span className="text-purple-400 dark:text-purple-400 font-semibold">
+                {" "}
+                KIXO - MUSTAFA ESMAIL{" "}
               </span>
               . All rights reserved.
             </p>
 
             {/* Payment Methods */}
             <div className="flex items-center gap-3">
-              <span className="text-xs text-gray-500">We Accept:</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                We Accept:
+              </span>
               <div className="flex gap-2">
                 {["VISA", "MC", "AMEX", "PP"].map((method) => (
                   <div
                     key={method}
-                    className="w-12 h-8 bg-white/10 rounded border cursor-pointer border-gray-600 flex items-center justify-center text-xs font-semibold text-gray-400 hover:bg-white/20 transition-colors"
+                    className="w-12 h-8 bg-white/10 dark:bg-white/5 rounded border cursor-pointer border-gray-600 dark:border-gray-700 flex items-center justify-center text-xs font-semibold text-gray-400 dark:text-gray-500 hover:bg-white/20 dark:hover:bg-white/10 transition-colors"
                   >
                     {method}
                   </div>

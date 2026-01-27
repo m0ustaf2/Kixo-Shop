@@ -64,7 +64,7 @@ export default function VerifyCodePage() {
   return (
     <div className="flex items-center justify-center my-5 p-4">
       {/* Main Card */}
-      <div className="relative w-full max-w-lg rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+      <div className="relative w-full max-w-lg rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-white/20 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
         <div className="overflow-hidden">
           {/* Header */}
           <FromHeader
@@ -78,7 +78,7 @@ export default function VerifyCodePage() {
         <div className="p-8">
           <Form {...form}>
             <div className="space-y-6">
-              {/* Email Field */}
+              {/* Reset Code Field */}
               <FormField
                 control={form.control}
                 name="resetCode"
@@ -87,8 +87,8 @@ export default function VerifyCodePage() {
                   const isValid = isFieldValid("resetCode");
                   return (
                     <FormItem>
-                      <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                        <Mail className="w-4 h-4 text-purple-600" />
+                      <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                         Reset Code
                       </FormLabel>
                       <FormControl>
@@ -97,12 +97,12 @@ export default function VerifyCodePage() {
                             {...field}
                             type="text"
                             placeholder="Enter your reset code"
-                            className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
+                            className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 ${
                               error
-                                ? "border-red-500 bg-red-50 animate-shake pr-10"
+                                ? "border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600 animate-shake pr-10"
                                 : isValid
-                                  ? "border-green-500 bg-green-50 pr-10"
-                                  : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                  ? "border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600 pr-10"
+                                  : "border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 focus:border-purple-500 dark:focus:border-purple-500 focus:bg-purple-50/30 dark:focus:bg-purple-950/20"
                             }`}
                           />
 
@@ -110,7 +110,7 @@ export default function VerifyCodePage() {
                           {error && <ErrorTollTip message={error} />}
                           {/* Success Icon */}
                           {isValid && (
-                            <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
+                            <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 dark:text-green-400 z-10" />
                           )}
                         </div>
                       </FormControl>
@@ -118,13 +118,13 @@ export default function VerifyCodePage() {
                   );
                 }}
               />
-              {/* Forgot Password */}
+              {/* Resend Code Link */}
               <div className="flex justify-end">
                 <Link
                   href="/forgotpassword"
-                  className="text-sm text-purple-600 hover:text-purple-700 font-medium hover:underline transition-all"
+                  className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium hover:underline transition-all"
                 >
-                  Sent me a new code?
+                  Send me a new code?
                 </Link>
               </div>
 
@@ -132,8 +132,8 @@ export default function VerifyCodePage() {
               <SubmitBtn
                 action={form.handleSubmit(onSubmit)}
                 isLoading={isLoading}
-                title={"Send Reset Code"}
-                titleLoading={"Sending..."}
+                title={"Verify Code"}
+                titleLoading={"Verifying..."}
               />
             </div>
           </Form>

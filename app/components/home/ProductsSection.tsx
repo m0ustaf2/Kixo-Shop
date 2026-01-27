@@ -1,12 +1,11 @@
 import { IProduct } from "@/app/interfaces/products.interface";
 import { getProducts } from "@/app/services/products.service";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import ProductItem from "../products/ProductItem";
 import SectionTitle from "../shared/SectionTitle";
+import NavigationButton from "../shared/ViewBtn";
 export default async function ProductsSection() {
-  const { data: products }: { data: IProduct[] } = await getProducts(8);
-
+  const res = await getProducts(8);
+  const products: IProduct[] = res?.data ?? [];
   return (
     <section className="pb-20">
       <div className="container mx-auto">
@@ -22,10 +21,8 @@ export default async function ProductsSection() {
             ))}
         </div>
 
-        <div className="flex justify-center items-center">
-          <Button asChild variant={"destructive"}>
-            <Link href="/products">View All Products</Link>
-          </Button>
+        <div className="flex  w-1/6 mx-auto">
+          <NavigationButton href={`/products`} title="View All Products" />
         </div>
       </div>
     </section>

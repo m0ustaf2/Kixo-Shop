@@ -1,9 +1,10 @@
 "use client";
 import RemoveFromWishlistBtn from "@/app/components/products/RemoveFromWishlistBtn";
+import NavigationButton from "@/app/components/shared/ViewBtn";
 import { useWishlist } from "@/app/Context/WishlistContext";
 
 import { Button } from "@/components/ui/button";
-import { Heart, Loader2, ShoppingCart, Star } from "lucide-react";
+import { Heart, Loader2, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,7 +22,7 @@ export default function WishlistPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="min-h-[60vh] dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 mx-auto text-red-500 animate-spin mb-4" />
           <p className="text-gray-600">Loading your wishlist...</p>
@@ -32,7 +33,7 @@ export default function WishlistPage() {
 
   if (!wishlistDetails || wishlistDetails.count === 0) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center bg-linear-to-b from-red-50 to-white">
+      <div className="min-h-[60vh] dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center max-w-md px-4">
           <div className="relative mb-6">
             <Heart
@@ -61,37 +62,44 @@ export default function WishlistPage() {
   }
 
   return (
-    <section className="py-12 bg-linear-to-b from-red-50 to-white min-h-screen">
+    <section className="min-h-screen py-12 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Heart className="w-8 h-8 text-red-500 fill-red-500" />
-            <h1 className="text-4xl font-bold text-gray-900">My Wishlist</h1>
+          <div className="mb-2 flex items-center gap-3">
+            <Heart className="h-8 w-8 text-red-500 fill-red-500" />
+            <h1 className="text-4xl font-bold">My Wishlist</h1>
           </div>
-          <p className="text-gray-600">
+
+          <p className="text-muted-foreground">
             {wishlistDetails.count}{" "}
             {wishlistDetails.count === 1 ? "item" : "items"} saved for later
           </p>
         </div>
 
         {/* Wishlist Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {wishlistDetails.data.map((product) => (
             <div
               key={product._id}
-              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group"
+              className="
+             overflow-hidden rounded-2xl border
+            bg-card text-card-foreground
+            shadow-sm transition-all duration-300
+            hover:shadow-xl dark:hover:shadow-2xl
+          "
             >
               {/* Product Image */}
-              <div className="relative aspect-square bg-gray-50 overflow-hidden">
+              <div className="relative aspect-square overflow-hidden bg-muted">
                 <Image
                   src={product.imageCover}
                   alt={product.title}
                   width={400}
                   height={400}
                   loading="lazy"
-                  className="w-full h-full object-cover "
+                  className="h-full w-full object-cover"
                 />
+
                 <RemoveFromWishlistBtn
                   productId={product._id}
                   productName={product.title}
@@ -101,57 +109,62 @@ export default function WishlistPage() {
 
               {/* Product Details */}
               <div className="p-4">
-                <h3 className="font-semibold text-gray-900 line-clamp-2 min-h-12">
+                <h3 className="min-h-12 line-clamp-2 font-semibold">
                   {product.title}
                 </h3>
 
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-2xl font-bold text-red-500">
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="text-2xl font-bold text-red-500 dark:text-red-400">
                     {product.price} EGP
                   </div>
 
-                  <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-full">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-semibold text-gray-700">
+                  <div
+                    className="
+                  flex items-center gap-1 rounded-full px-2 py-1
+                  bg-yellow-50
+                  dark:bg-yellow-400/10
+                "
+                  >
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <span className="text-sm font-semibold text-foreground">
                       {product.ratingsAverage}
                     </span>
                   </div>
                 </div>
-
                 {/* View Product Button */}
-                <Button
-                  className="w-full bg-red-500 hover:bg-red-600 text-white group/cart"
-                  asChild
-                >
-                  <Link
-                    href={`/products/${product._id}`}
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <ShoppingCart className="w-4 h-4 group-hover/cart:scale-110 transition-transform" />
-                    View Product
-                  </Link>
-                </Button>
+                <NavigationButton
+                  title={"View Product"}
+                  href={`/products/${product._id}`}
+                />
               </div>
             </div>
           ))}
         </div>
 
         {/* Summary Card */}
-        <div className="mt-12 bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto border-2 border-red-100 my-5">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Heart className="w-6 h-6 text-red-500 fill-red-500" />
+        <div
+          className="
+        mx-auto my-5 mt-12 max-w-md rounded-2xl border
+        bg-card text-card-foreground
+        p-8 shadow-lg
+      "
+        >
+          <h3 className="mb-6 flex items-center gap-2 text-2xl font-bold">
+            <Heart className="h-6 w-6 text-red-500 fill-red-500" />
             Wishlist Summary
           </h3>
+
           <div className="space-y-4">
-            <div className="flex justify-between items-center pb-4 border-b border-gray-200">
-              <span className="text-gray-600">Total Items</span>
-              <span className="text-2xl font-bold text-red-500">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <span className="text-muted-foreground">Total Items</span>
+              <span className="text-2xl font-bold text-red-500 ">
                 {wishlistDetails.count}
               </span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Total Value</span>
-              <span className="text-2xl font-bold text-gray-900">
+
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-muted-foreground">Total Value</span>
+              <span className="text-2xl font-bold">
                 {wishlistDetails.data
                   .reduce((sum, item) => sum + item.price, 0)
                   .toLocaleString()}{" "}
@@ -159,12 +172,8 @@ export default function WishlistPage() {
               </span>
             </div>
           </div>
-          <Button
-            asChild
-            className="w-full mt-6 bg-red-500 hover:bg-red-600 text-white py-6 text-lg"
-          >
-            <Link href="/products">Continue Shopping</Link>
-          </Button>
+
+          <NavigationButton href={`/products`} title="Continue Shopping" />
         </div>
       </div>
     </section>

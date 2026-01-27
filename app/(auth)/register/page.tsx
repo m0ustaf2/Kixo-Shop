@@ -143,7 +143,7 @@ export default function RegisterPage() {
     <div className="flex items-center justify-center p-4 py-8">
       {/* Main Card */}
       <div className="relative w-full max-w-lg">
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+        <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-white/20 dark:border-gray-700 overflow-hidden">
           {/* Header */}
           <FromHeader
             Header={"Create Account"}
@@ -163,8 +163,8 @@ export default function RegisterPage() {
                     const isValid = isFieldValid("name");
                     return (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                          <User className="w-4 h-4 text-purple-600" />
+                        <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                          <User className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                           Full Name
                         </FormLabel>
                         <FormControl>
@@ -172,19 +172,19 @@ export default function RegisterPage() {
                             <Input
                               {...field}
                               placeholder="John Doe"
-                              className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
+                              className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 ${
                                 error
-                                  ? "border-red-500 bg-red-50 animate-shake pr-10"
+                                  ? "border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600 animate-shake pr-10"
                                   : isValid
-                                    ? "border-green-500 bg-green-50 pr-10"
-                                    : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                    ? "border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600 pr-10"
+                                    : "border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 focus:border-purple-500 dark:focus:border-purple-500 focus:bg-purple-50/30 dark:focus:bg-purple-950/20"
                               }`}
                             />
 
                             {error && <ErrorTollTip message={error} />}
 
                             {isValid && (
-                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
+                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 dark:text-green-400 z-10" />
                             )}
                           </div>
                         </FormControl>
@@ -202,8 +202,8 @@ export default function RegisterPage() {
                     const isValid = isFieldValid("email");
                     return (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                          <Mail className="w-4 h-4 text-purple-600" />
+                        <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                           Email Address
                         </FormLabel>
                         <FormControl>
@@ -212,19 +212,19 @@ export default function RegisterPage() {
                               {...field}
                               type="email"
                               placeholder="you@example.com"
-                              className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
+                              className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 ${
                                 error
-                                  ? "border-red-500 bg-red-50 animate-shake pr-10"
+                                  ? "border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600 animate-shake pr-10"
                                   : isValid
-                                    ? "border-green-500 bg-green-50 pr-10"
-                                    : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                    ? "border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600 pr-10"
+                                    : "border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 focus:border-purple-500 dark:focus:border-purple-500 focus:bg-purple-50/30 dark:focus:bg-purple-950/20"
                               }`}
                             />
 
                             {error && <ErrorTollTip message={error} />}
 
                             {isValid && (
-                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
+                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 dark:text-green-400 z-10" />
                             )}
                           </div>
                         </FormControl>
@@ -242,8 +242,8 @@ export default function RegisterPage() {
                     const isValid = isFieldValid("phone");
                     return (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                          <Phone className="w-4 h-4 text-purple-600" />
+                        <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                           Phone Number
                         </FormLabel>
                         <FormControl>
@@ -251,19 +251,19 @@ export default function RegisterPage() {
                             <Input
                               {...field}
                               placeholder="+201xxxxxxxxx"
-                              className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 ${
+                              className={`px-4 py-3.5 rounded-xl border-2 transition-all duration-200 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 ${
                                 error
-                                  ? "border-red-500 bg-red-50 animate-shake pr-10"
+                                  ? "border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600 animate-shake pr-10"
                                   : isValid
-                                    ? "border-green-500 bg-green-50 pr-10"
-                                    : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                    ? "border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600 pr-10"
+                                    : "border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 focus:border-purple-500 dark:focus:border-purple-500 focus:bg-purple-50/30 dark:focus:bg-purple-950/20"
                               }`}
                             />
 
                             {error && <ErrorTollTip message={error} />}
 
                             {isValid && (
-                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
+                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 dark:text-green-400 z-10" />
                             )}
                           </div>
                         </FormControl>
@@ -281,8 +281,8 @@ export default function RegisterPage() {
                     const isValid = isFieldValid("password");
                     return (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                          <Lock className="w-4 h-4 text-purple-600" />
+                        <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                          <Lock className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                           Password
                         </FormLabel>
                         <FormControl>
@@ -295,19 +295,19 @@ export default function RegisterPage() {
                                 field.onChange(e);
                                 form.trigger("password");
                               }}
-                              className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 ${
+                              className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 ${
                                 error
-                                  ? "border-red-500 bg-red-50 animate-shake"
+                                  ? "border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600 animate-shake"
                                   : isValid
-                                    ? "border-green-500 bg-green-50"
-                                    : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                    ? "border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600"
+                                    : "border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 focus:border-purple-500 dark:focus:border-purple-500 focus:bg-purple-50/30 dark:focus:bg-purple-950/20"
                               }`}
                             />
 
                             <button
                               type="button"
                               onClick={() => setShowPassword(!showPassword)}
-                              className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-600 transition-colors p-1 z-10"
+                              className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors p-1 z-10"
                             >
                               {showPassword ? (
                                 <EyeOff className="w-5 h-5" />
@@ -318,15 +318,15 @@ export default function RegisterPage() {
 
                             {error && <ErrorTollTip message={error} />}
                             {isValid && (
-                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
+                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 dark:text-green-400 z-10" />
                             )}
                           </div>
                         </FormControl>
 
                         {/* Password Strength Indicators */}
                         {showPasswordStrength && (
-                          <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200 space-y-2">
-                            <p className="text-xs font-semibold text-gray-700 mb-2">
+                          <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 space-y-2">
+                            <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
                               Password must contain:
                             </p>
                             <div className="grid grid-cols-1 gap-1.5">
@@ -367,8 +367,8 @@ export default function RegisterPage() {
                     const isValid = isFieldValid("rePassword");
                     return (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                          <Lock className="w-4 h-4 text-purple-600" />
+                        <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                          <Lock className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                           Confirm Password
                         </FormLabel>
                         <FormControl>
@@ -377,19 +377,19 @@ export default function RegisterPage() {
                               {...field}
                               type={showRePassword ? "text" : "password"}
                               placeholder="••••••••"
-                              className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 ${
+                              className={`px-4 py-3.5 pr-24 rounded-xl border-2 transition-all duration-200 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 ${
                                 error
-                                  ? "border-red-500 bg-red-50 animate-shake"
+                                  ? "border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-600 animate-shake"
                                   : isValid
-                                    ? "border-green-500 bg-green-50"
-                                    : "border-gray-200 hover:border-purple-300 focus:border-purple-500 focus:bg-purple-50/30"
+                                    ? "border-green-500 bg-green-50 dark:bg-green-950/30 dark:border-green-600"
+                                    : "border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 focus:border-purple-500 dark:focus:border-purple-500 focus:bg-purple-50/30 dark:focus:bg-purple-950/20"
                               }`}
                             />
 
                             <button
                               type="button"
                               onClick={() => setShowRePassword(!showRePassword)}
-                              className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-600 transition-colors p-1 z-10"
+                              className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors p-1 z-10"
                             >
                               {showRePassword ? (
                                 <EyeOff className="w-5 h-5" />
@@ -401,7 +401,7 @@ export default function RegisterPage() {
                             {error && <ErrorTollTip message={error} />}
 
                             {isValid && (
-                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 z-10" />
+                              <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 dark:text-green-400 z-10" />
                             )}
                           </div>
                         </FormControl>
@@ -417,11 +417,11 @@ export default function RegisterPage() {
                   titleLoading={"Creating Account..."}
                 />
                 {/* Login Link */}
-                <p className="text-center text-sm text-gray-600 mt-4">
-                  Already have an account?
+                <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
+                  Already have an account?{" "}
                   <Link
                     href="/login"
-                    className="text-purple-600 hover:text-purple-700 font-semibold hover:underline transition-all"
+                    className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold hover:underline transition-all"
                   >
                     Sign in
                   </Link>

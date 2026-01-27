@@ -81,7 +81,7 @@ export default function RemoveFromWishlistBtn({
   return (
     <button
       onClick={() => setShowConfirm(true)}
-      className="absolute bottom-0 right-0 z-10 p-2.5 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-red-50 hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+      className="absolute bottom-0 right-0 z-10 my-2 mx-2 p-2.5 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-red-50 hover:shadow-xl transition-all duration-300 hover:scale-110 group"
       aria-label={`Remove ${productName} from wishlist`}
     >
       <HeartCrack
@@ -90,11 +90,6 @@ export default function RemoveFromWishlistBtn({
              group-hover:rotate-6
              transition-all duration-300"
       />
-      {/* Tooltip */}
-      <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-        Remove from wishlist
-        <div className="absolute top-full right-4 -mt-1 border-4 border-transparent border-t-gray-900" />
-      </div>
     </button>
   );
 }

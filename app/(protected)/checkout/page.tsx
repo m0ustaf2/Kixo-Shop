@@ -72,11 +72,13 @@ export default function CheckoutPage() {
 
   return (
     <section className="py-10">
-      <div className="max-w-xl mx-auto rounded-2xl border bg-background p-8 shadow-sm space-y-8">
+      <div className="max-w-xl mx-auto rounded-2xl border bg-background dark:bg-slate-900 p-8 shadow-sm space-y-8">
         {/* Header */}
         <header className="text-center space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight">Checkout</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+            Checkout
+          </h1>
+          <p className="text-sm text-muted-foreground dark:text-gray-400">
             Enter your delivery details to complete your order
           </p>
         </header>
@@ -92,14 +94,17 @@ export default function CheckoutPage() {
               name="details"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Address Details</FormLabel>
+                  <FormLabel className="dark:text-gray-100">
+                    Address Details
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       placeholder="Street, building, floor, apartment"
+                      className="dark:bg-slate-800 dark:text-gray-100 dark:border-slate-700"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="dark:text-red-400" />
                 </FormItem>
               )}
             />
@@ -111,11 +116,15 @@ export default function CheckoutPage() {
                 name="city"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>City</FormLabel>
+                    <FormLabel className="dark:text-gray-100">City</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="City name" />
+                      <Input
+                        {...field}
+                        placeholder="City name"
+                        className="dark:bg-slate-800 dark:text-gray-100 dark:border-slate-700"
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="dark:text-red-400" />
                   </FormItem>
                 )}
               />
@@ -125,24 +134,29 @@ export default function CheckoutPage() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone</FormLabel>
+                    <FormLabel className="dark:text-gray-100">Phone</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="+201xxxxxxxxx" />
+                      <Input
+                        {...field}
+                        placeholder="+201xxxxxxxxx"
+                        className="dark:bg-slate-800 dark:text-gray-100 dark:border-slate-700"
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="dark:text-red-400" />
                   </FormItem>
                 )}
               />
             </div>
 
             {/* Payment Method */}
-
             <FormField
               control={form.control}
               name="paymentMethod"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Payment Method</FormLabel>
+                  <FormLabel className="dark:text-gray-100">
+                    Payment Method
+                  </FormLabel>
 
                   <div className="grid grid-cols-2 gap-4">
                     {/* CASH */}
@@ -150,8 +164,8 @@ export default function CheckoutPage() {
                       className={clsx(
                         "relative cursor-pointer rounded-xl border p-4 transition-colors duration-300 ease-in-out",
                         field.value === "cash"
-                          ? "border-blue-600 bg-blue-50 shadow-lg"
-                          : "border-gray-300 hover:border-blue-400 hover:bg-blue-50/30",
+                          ? "border-blue-600 bg-blue-50 shadow-lg dark:bg-blue-900"
+                          : "border-gray-300 hover:border-blue-400 hover:bg-blue-50/30 dark:border-slate-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/30",
                       )}
                     >
                       <input
@@ -162,9 +176,10 @@ export default function CheckoutPage() {
                         onChange={field.onChange}
                         className="sr-only"
                       />
-
-                      <p className="font-medium">Cash</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="font-medium text-gray-900 dark:text-gray-100">
+                        Cash
+                      </p>
+                      <p className="text-sm text-muted-foreground dark:text-gray-400">
                         Pay when order arrives
                       </p>
                     </label>
@@ -174,8 +189,8 @@ export default function CheckoutPage() {
                       className={clsx(
                         "relative cursor-pointer rounded-xl border p-4 transition-colors duration-300 ease-in-out",
                         field.value === "card"
-                          ? "border-blue-600 bg-blue-50 shadow-lg"
-                          : "border-gray-300 hover:border-blue-400 hover:bg-blue-50/30",
+                          ? "border-blue-600 bg-blue-50 shadow-lg dark:bg-blue-900"
+                          : "border-gray-300 hover:border-blue-400 hover:bg-blue-50/30 dark:border-slate-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/30",
                       )}
                     >
                       <input
@@ -186,15 +201,16 @@ export default function CheckoutPage() {
                         onChange={field.onChange}
                         className="sr-only"
                       />
-
-                      <p className="font-medium">Card</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="font-medium text-gray-900 dark:text-gray-100">
+                        Card
+                      </p>
+                      <p className="text-sm text-muted-foreground dark:text-gray-400">
                         Pay securely online
                       </p>
                     </label>
                   </div>
 
-                  <FormMessage />
+                  <FormMessage className="dark:text-red-400" />
                 </FormItem>
               )}
             />

@@ -4,7 +4,8 @@ import CategoriesSlider from "../CategoriesSlider";
 import SectionTitle from "../shared/SectionTitle";
 import { Separator } from "@/components/ui/separator";
 export default async function CategoriesSection() {
-  const { data: categories }: { data: ICategory[] } = await getCategories();
+  const res = await getCategories();
+  const categories: ICategory[] = res?.data ?? [];
   return (
     <section className="py-10">
       <div className="container mx-auto">

@@ -1,5 +1,6 @@
 import SectionTitle from "@/app/components/shared/SectionTitle";
 import SummaryCard from "@/app/components/shared/SummaryCard";
+import NavigationButton from "@/app/components/shared/ViewBtn";
 import { ISubcategory } from "@/app/interfaces/subcategory.interface";
 import { getSubCategoriesInCategory } from "@/app/services/categories.service";
 import { Button } from "@/components/ui/button";
@@ -53,13 +54,13 @@ export default async function SubCategories({
 }) {
   const resolvedParams = await params;
   const categoryID = resolvedParams.subcategories[0];
-  const { data: subCategories }: { data: ISubcategory[] } =
-    await getSubCategoriesInCategory(categoryID);
-  console.log(subCategories);
+  if (!categoryID) return null;
+  const res = await getSubCategoriesInCategory(categoryID);
+  const subCategories: ISubcategory[] = res?.data ?? [];
 
   return (
     <>
-      <section className="py-20">
+      <section className="py-20 dark:bg-gray-900">
         <div className="container mx-auto">
           <SectionTitle title="Sub Categories" subTitle="Our Sub Categories" />
           <Separator />
@@ -70,7 +71,7 @@ export default async function SubCategories({
                 {subCategories.map((subCat, index) => (
                   <div
                     key={subCat._id}
-                    className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-2xl dark:shadow-gray-900/50 dark:hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-gray-700 group"
                   >
                     {/* Gradient Icon Section */}
                     <div
@@ -79,7 +80,7 @@ export default async function SubCategories({
                       } flex items-center justify-center overflow-hidden`}
                     >
                       {/* Animated Background Pattern */}
-                      <div className="absolute inset-0 opacity-20">
+                      <div className="absolute inset-0 opacity-20 dark:opacity-30">
                         <div
                           className="absolute inset-0"
                           style={{
@@ -92,8 +93,8 @@ export default async function SubCategories({
 
                       {/* Animated Circles */}
                       <div className="absolute inset-0 overflow-hidden">
-                        <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700" />
-                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-700" />
+                        <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/10 dark:bg-white/15 rounded-full group-hover:scale-150 transition-transform duration-700" />
+                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 dark:bg-white/15 rounded-full group-hover:scale-150 transition-transform duration-700" />
                       </div>
 
                       {/* Icon */}
@@ -102,12 +103,12 @@ export default async function SubCategories({
                       </div>
 
                       {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/20 dark:from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
                     {/* Content Section */}
                     <div className="p-6">
-                      <h3 className="font-bold text-gray-900 text-center text-lg mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
+                      <h3 className="font-bold text-gray-900 dark:text-gray-100 text-center text-lg mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all duration-300">
                         {subCat.name}
                       </h3>
                     </div>
@@ -121,17 +122,15 @@ export default async function SubCategories({
               />
             </>
           ) : (
-            <div className="mt-12 bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto border-2 border-blue-100 my-5">
-              <p className="text-center font-bold text-gray-900 text-xl mb-4">
+            <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-gray-900/50 p-8 max-w-md mx-auto border-2 border-blue-100 dark:border-blue-900/50 my-5">
+              <p className="text-center font-bold text-gray-900 dark:text-gray-100 text-xl mb-4">
                 No Sub Categories Found in this Category
               </p>
-              <Button
-                asChild
-                variant="destructive"
-                className="w-full mt-6 text-white py-3 px-4 rounded-lg text-lg font-medium"
-              >
-                <Link href="/categories">Back to Categories</Link>
-              </Button>
+
+              <NavigationButton
+                href={`categories`}
+                title="Back to Categories"
+              />
             </div>
           )}
         </div>

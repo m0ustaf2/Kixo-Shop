@@ -4,9 +4,11 @@ import { useState } from "react";
 export default function RemoveFromCartBtn({
   onRemove,
   productName,
+  isLoading = false,
 }: {
   onRemove: () => Promise<void>;
   productName: string;
+  isLoading?: boolean;
 }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
@@ -28,10 +30,10 @@ export default function RemoveFromCartBtn({
       <div className="flex items-center gap-2 animate-in fade-in slide-in-from-right-5 duration-200">
         <button
           onClick={handleRemove}
-          disabled={isRemoving}
+          disabled={isLoading || isRemoving}
           className="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
         >
-          {isRemoving ? (
+          {isRemoving || isLoading ? (
             <>
               <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
               Removing...

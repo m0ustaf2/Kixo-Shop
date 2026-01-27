@@ -45,7 +45,7 @@ export default function ProductItem({ product }: { product: IProduct }) {
         {/* Add to Cart Button */}
         <AddToCartBtn
           variant={"destructive"}
-          className="w-full cursor-pointer absolute bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out rounded-t-none"
+          className="w-full cursor-pointer absolute bottom-0 dark:bg-gray-800 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out rounded-t-none"
           productId={product._id}
         />
       </div>
@@ -68,7 +68,7 @@ export default function ProductItem({ product }: { product: IProduct }) {
               </span>
             </>
           ) : (
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-bold text-red-500">
               {product.price} EGP
             </span>
           )}
