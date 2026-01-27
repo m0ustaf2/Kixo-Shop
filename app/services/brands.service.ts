@@ -6,7 +6,7 @@ const API_BASE_URL =
 export async function getAllBrands() {
   try {
     const res = await fetch(`${API_BASE_URL}/api/v1/brands`, {
-      cache: "no-store",
+      next: { revalidate: 3600 }, // Cache for 1 hour instead of no-store
     });
     if (!res.ok) {
       throw new Error(res.statusText || "Failed to fetch brands");

@@ -78,7 +78,7 @@ export default function ProductItem({ product }: { product: IProduct }) {
             <Star
               key={i}
               className={`w-4 h-4 ${
-                i < Math.floor(product.ratingsAverage)
+                i < Math.floor(product.ratingsAverage ?? 0)
                   ? "text-yellow-400 fill-yellow-400"
                   : "text-gray-300 fill-gray-300"
               }`}
