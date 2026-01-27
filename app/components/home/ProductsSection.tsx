@@ -21,7 +21,7 @@ export default async function ProductsSection() {
             ))}
         </div>
 
-        <div className="flex  w-1/6 mx-auto">
+        <div className="mx-auto w-min sm:max-w-3xs  ">
           <NavigationButton href={`/products`} title="View All Products" />
         </div>
       </div>

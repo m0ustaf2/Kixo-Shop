@@ -48,9 +48,11 @@ export default async function BrandPage({ params }: BrandPageProps) {
               <Image
                 src={brand.image}
                 alt={brand.name}
-                loading="lazy"
                 fill
                 className="object-contain p-4"
+                unoptimized
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
               />
             </div>
             <div>
@@ -131,8 +133,11 @@ export default async function BrandPage({ params }: BrandPageProps) {
                 <Image
                   src={product.imageCover}
                   alt={product.title}
-                  loading="lazy"
+                  unoptimized
                   fill
+                  priority={false}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                   className="object-contain group-hover:scale-105 transition-transform duration-300"
                 />
 

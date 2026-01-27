@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination} from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { ICategory } from "../interfaces/categories.interface";
 import Image from "next/image";
 export default function CategoriesSlider({
@@ -46,7 +46,9 @@ export default function CategoriesSlider({
               width={270}
               height={250}
               alt={cat.slug}
-              loading="lazy"
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
               className="w-full h-[15.625rem] object-contain bg-gray-100 mb-4"
             />
             <h3 className="font-medium">{cat.name}</h3>

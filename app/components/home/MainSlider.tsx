@@ -39,7 +39,9 @@ export default function MainSlider() {
                     width={1920}
                     height={344}
                     alt={image.label}
-                    loading="lazy"
+                    unoptimized
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                     className="w-full h-[21.5rem] object-cover"
                   />
                 </SwiperSlide>

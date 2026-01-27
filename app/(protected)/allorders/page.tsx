@@ -156,6 +156,9 @@ export default async function AllOrdersPage() {
                           alt={item.product.title}
                           fill
                           className="object-cover"
+                          unoptimized
+                          placeholder="blur"
+                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                         />
                       </div>
 

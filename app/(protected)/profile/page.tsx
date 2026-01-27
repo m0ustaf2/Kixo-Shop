@@ -181,9 +181,7 @@ export default function ProfilePage() {
                 asChild
                 className="
               flex-1 rounded-xl font-medium
-              bg-indigo-600 text-white
-              hover:bg-indigo-700
-              shadow-lg hover:shadow-xl
+             bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white 
             "
               >
                 <Link href="/updatepassword">Edit Password</Link>

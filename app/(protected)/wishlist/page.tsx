@@ -3,10 +3,8 @@ import RemoveFromWishlistBtn from "@/app/components/products/RemoveFromWishlistB
 import NavigationButton from "@/app/components/shared/ViewBtn";
 import { useWishlist } from "@/app/Context/WishlistContext";
 
-import { Button } from "@/components/ui/button";
 import { Heart, Loader2, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function WishlistPage() {
   const { wishlistDetails, setWishlistDetails, isLoading } = useWishlist();
@@ -50,12 +48,9 @@ export default function WishlistPage() {
           <p className="text-gray-600 mb-8 text-lg">
             Save your favorite items here and shop them later!
           </p>
-          <Button
-            asChild
-            className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg"
-          >
-            <Link href="/products">Explore Products</Link>
-          </Button>
+          <div className="w-min sm:max-w-3xs mx-auto mb-4">
+            <NavigationButton href={"/products"} title={"Explore Products"} />
+          </div>
         </div>
       </div>
     );
@@ -96,8 +91,10 @@ export default function WishlistPage() {
                   alt={product.title}
                   width={400}
                   height={400}
-                  loading="lazy"
                   className="h-full w-full object-cover"
+                  unoptimized
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                 />
 
                 <RemoveFromWishlistBtn
@@ -131,7 +128,7 @@ export default function WishlistPage() {
                     </span>
                   </div>
                 </div>
-                {/* View Product Button */}
+
                 <NavigationButton
                   title={"View Product"}
                   href={`/products/${product._id}`}

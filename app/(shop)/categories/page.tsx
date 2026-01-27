@@ -24,14 +24,14 @@ export default async function CategoriesPage() {
                 <div className="relative aspect-square bg-gray-50 dark:bg-gray-900 overflow-hidden flex items-center justify-center p-8">
                   <Image
                     src={category?.image}
-                    alt={category?.slug}
+                    alt={category?.name || category?.slug}
                     width={270}
                     height={250}
-                    loading="lazy"
                     className="w-full h-[15.625rem] object-contain bg-gray-100 dark:bg-gray-800 mb-4"
                     unoptimized
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                   />
-
                   <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 dark:group-hover:from-blue-500/10 dark:group-hover:to-purple-500/10 transition-all duration-300"></div>
                 </div>
 
@@ -40,7 +40,7 @@ export default async function CategoriesPage() {
                     {category.name}
                   </h3>
                   <NavigationButton
-                    href={`categories/${category?._id}/subcategories`}
+                    href={`/categories/${category?._id}/subcategories`}
                     title="View Sub Categories"
                   />
                 </div>

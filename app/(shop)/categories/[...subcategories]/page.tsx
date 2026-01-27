@@ -3,7 +3,6 @@ import SummaryCard from "@/app/components/shared/SummaryCard";
 import NavigationButton from "@/app/components/shared/ViewBtn";
 import { ISubcategory } from "@/app/interfaces/subcategory.interface";
 import { getSubCategoriesInCategory } from "@/app/services/categories.service";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   Apple,
@@ -17,7 +16,6 @@ import {
   Smartphone,
   Sparkles,
 } from "lucide-react";
-import Link from "next/link";
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
   "6439d5b90049ad0b52b90048": Shirt, // Men's Fashion
   "6439d58a0049ad0b52b9003f": ShoppingBag, // Women's Fashion
@@ -34,7 +32,6 @@ const getCategoryIcon = (categoryId: string) => {
   return <IconComponent className="w-20 h-20" strokeWidth={1.5} />;
 };
 
-// Gradient colors array
 const gradients = [
   "from-purple-500 to-pink-500",
   "from-blue-500 to-cyan-500",
@@ -73,13 +70,11 @@ export default async function SubCategories({
                     key={subCat._id}
                     className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-2xl dark:shadow-gray-900/50 dark:hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-gray-700 group"
                   >
-                    {/* Gradient Icon Section */}
                     <div
                       className={`relative h-56 bg-linear-to-br ${
                         gradients[index % gradients.length]
                       } flex items-center justify-center overflow-hidden`}
                     >
-                      {/* Animated Background Pattern */}
                       <div className="absolute inset-0 opacity-20 dark:opacity-30">
                         <div
                           className="absolute inset-0"
@@ -91,22 +86,18 @@ export default async function SubCategories({
                         />
                       </div>
 
-                      {/* Animated Circles */}
                       <div className="absolute inset-0 overflow-hidden">
                         <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/10 dark:bg-white/15 rounded-full group-hover:scale-150 transition-transform duration-700" />
                         <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 dark:bg-white/15 rounded-full group-hover:scale-150 transition-transform duration-700" />
                       </div>
 
-                      {/* Icon */}
                       <div className="relative z-10 text-white group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
                         {getCategoryIcon(subCat.category)}
                       </div>
 
-                      {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-linear-to-t from-black/20 dark:from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
-                    {/* Content Section */}
                     <div className="p-6">
                       <h3 className="font-bold text-gray-900 dark:text-gray-100 text-center text-lg mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all duration-300">
                         {subCat.name}
@@ -128,7 +119,7 @@ export default async function SubCategories({
               </p>
 
               <NavigationButton
-                href={`categories`}
+                href={`/categories`}
                 title="Back to Categories"
               />
             </div>

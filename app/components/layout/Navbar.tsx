@@ -317,7 +317,7 @@ const renderMenuItem = (item: MenuItem, pathName: string) => {
       <NavigationMenuLink
         href={item.url}
         className={cn(
-          "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-600 hover:text-accent-foreground",
+          "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors dark:hover:bg-gray-600 hover:text-accent-foreground",
           pathName === item.url && "underline",
         )}
       >
@@ -330,7 +330,7 @@ const renderMenuItem = (item: MenuItem, pathName: string) => {
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
   return (
     <Link
-      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground dark:hover:bg-gray-800"
+      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none  dark:hover:text-accent-foreground dark:hover:bg-gray-800"
       href={item.url}
     >
       <div className="text-foreground dark:text-gray-300">{item.icon}</div>

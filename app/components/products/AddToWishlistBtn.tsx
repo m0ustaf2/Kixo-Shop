@@ -24,6 +24,7 @@ export default function AddToWishlistBtn({
   const { getWishlistDetails } = useWishlist();
 
   async function toggleWishlist() {
+    if (isLoading) return;
     setIsLoading(true);
     try {
       let result;
@@ -43,7 +44,6 @@ export default function AddToWishlistBtn({
           { position: "top-center" },
         );
 
-        // Refresh wishlist count in navbar
         await getWishlistDetails();
       } else {
         toast.error(result.message || "Failed to update wishlist", {

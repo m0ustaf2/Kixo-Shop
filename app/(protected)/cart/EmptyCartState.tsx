@@ -34,7 +34,7 @@ export default function EmptyCartState() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex mx-auto w-1/3">
+        <div className="flex w-min sm:max-w-3xs mx-auto">
           <NavigationButton title={"Start Shopping"} href={"/"} />
         </div>
       </div>

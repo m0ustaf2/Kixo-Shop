@@ -126,7 +126,6 @@ export default function CartPage() {
                   "
                     >
                       <div className="flex gap-6">
-                        {/* Product Image */}
                         <div className="shrink-0">
                           <div className="h-32 w-32 overflow-hidden rounded-xl bg-muted border border-border">
                             <Image
@@ -135,6 +134,9 @@ export default function CartPage() {
                               width={128}
                               height={128}
                               className="h-full w-full object-cover"
+                              unoptimized
+                              placeholder="blur"
+                              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                             />
                           </div>
                         </div>

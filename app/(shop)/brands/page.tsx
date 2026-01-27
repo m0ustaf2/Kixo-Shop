@@ -39,7 +39,9 @@ export default async function Brands() {
                     alt={brand?.name}
                     width={500}
                     height={500}
-                    loading="lazy"
+                    unoptimized
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+fAQADhAGA/e0cyQAAAABJRU5ErkJggg=="
                   />
 
                   {/* Hover Overlay */}

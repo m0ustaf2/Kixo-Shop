@@ -26,22 +26,25 @@ export default function ProductSwiper({ images }: { images: string[] }) {
     setIsZooming(false);
   };
   return (
-     <div className="w-full">
+    <div className="w-full">
       {/* Main Swiper */}
       <div className="relative mb-4 group">
         <Swiper
           spaceBetween={10}
           navigation={{
-            nextEl: '.swiper-button-next-custom',
-            prevEl: '.swiper-button-prev-custom',
+            nextEl: ".swiper-button-next-custom",
+            prevEl: ".swiper-button-prev-custom",
           }}
-          thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+          thumbs={{
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+          }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="main-product-swiper rounded-lg overflow-hidden"
         >
           {images.map((image, idx) => (
             <SwiperSlide key={idx}>
-              <div 
+              <div
                 className="bg-gray-100 flex items-center justify-center relative overflow-hidden cursor-zoom-in"
                 onMouseMove={handleMouseMove}
                 onMouseEnter={handleMouseEnter}
@@ -54,7 +57,7 @@ export default function ProductSwiper({ images }: { images: string[] }) {
                   alt={`Product image ${idx + 1}`}
                   className="w-full h-[28rem] md:h-[37.5rem] object-contain transition-transform duration-200"
                   style={{
-                    transform: isZooming ? 'scale(2)' : 'scale(1)',
+                    transform: isZooming ? "scale(2)" : "scale(1)",
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                   }}
                   priority={idx === 0}

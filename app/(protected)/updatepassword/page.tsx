@@ -59,7 +59,7 @@ export default function UpdatePage() {
         signOut({ callbackUrl: "/login" });
         setTimeout(() => {
           router.push("/login");
-        }, 2000);
+        }, 3000);
       } else {
         toast.error(res?.message || "Something went wrong", {
           position: "top-center",
@@ -155,7 +155,7 @@ export default function UpdatePage() {
                     <FormItem>
                       <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2">
                         <Lock className="w-4 h-4 text-purple-600" />
-                        Password
+                        New Password
                       </FormLabel>
                       <FormControl>
                         <div className="relative group">
@@ -205,7 +205,7 @@ export default function UpdatePage() {
                     <FormItem>
                       <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2">
                         <Lock className="w-4 h-4 text-purple-600" />
-                        RePassword
+                        Re Password
                       </FormLabel>
                       <FormControl>
                         <div className="relative group">
