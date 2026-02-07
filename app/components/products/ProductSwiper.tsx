@@ -55,7 +55,7 @@ export default function ProductSwiper({ images }: { images: string[] }) {
                   width={600}
                   height={600}
                   alt={`Product image ${idx + 1}`}
-                  className="w-full h-[28rem] md:h-[37.5rem] object-contain transition-transform duration-200"
+                  className=" h-[28rem] md:h-[37.5rem] object-contain transition-transform duration-200"
                   style={{
                     transform: isZooming ? "scale(2)" : "scale(1)",
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
