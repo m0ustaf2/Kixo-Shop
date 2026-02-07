@@ -27,6 +27,8 @@ Kixo Shop is a modern e-commerce web application built to provide a smooth, fast
 - **TanStack Query**
 - **React Hook Form**
 - **Zod** for schema validation
+- **next-themes**
+- **React-Swiper**
 
 ### Authentication
 - **NextAuth.js** 
@@ -67,7 +69,10 @@ kixo-shop/
 ### 📸 Screenshots
 <img width="1906" height="858" alt="image" src="https://github.com/user-attachments/assets/182b2d7d-78ab-4f21-8b94-8d5f3630db19" />
 <img width="1898" height="915" alt="image" src="https://github.com/user-attachments/assets/dd2247db-e6cb-4e50-a382-ef90d0c6fbd8" />
-<img width="1898" height="913" alt="image" src="https://github.com/user-attachments/assets/3f38059f-25cf-4033-a56f-c0c1bf24d083" />
+<img width="1890" height="899" alt="image" src="https://github.com/user-attachments/assets/8d494a1f-2633-4e87-8151-eeee6b40360d" />
+<img width="1885" height="908" alt="image" src="https://github.com/user-attachments/assets/0f204e54-6e15-4627-ab69-cb10699017c7" />
+<img width="1895" height="890" alt="image" src="https://github.com/user-attachments/assets/6b8d4b77-9879-4f04-862d-fb52997e6e6e" />
+
 <img width="1898" height="906" alt="image" src="https://github.com/user-attachments/assets/00ef0232-2fbf-42b1-8ab8-2d1aa922a567" />
 
 
